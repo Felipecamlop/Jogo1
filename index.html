@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Imagens</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            max-width: 100%;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .image-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 2px solid #ccc;
+        }
+        
+        .image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease;
+        }
+        
+        .image1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            opacity: 1;
+        }
+        
+        .image2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            opacity: 0;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        
+        .btn {
+            width: 60px;
+            height: 60px;
+            font-size: 0;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn svg {
+            width: 32px;
+            height: 32px;
+        }
+        
+        /* Responsivo para dispositivos móveis */
+        @media (max-width: 767px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .image-container {
+                width: 280px;
+                height: 280px;
+                margin-bottom: 20px;
+            }
+            
+            .buttons {
+                flex-direction: row;
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+                align-items: center;
+                gap: 20px;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                background-color: #f5f5f5;
+                padding: 15px;
+                border-radius: 10px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            <div class="image image1" id="imagem1">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+                    <!-- Casa -->
+                    <rect x="75" y="150" width="150" height="100" fill="#8B4513" />
+                    <polygon points="75,150 150,75 225,150" fill="#A52A2A" />
+                    <rect x="125" y="200" width="50" height="50" fill="#FFFFFF" />
+                    <rect x="135" y="210" width="30" height="40" fill="#87CEEB" />
+                    <rect x="175" y="170" width="30" height="30" fill="#FFFFFF" />
+                    <rect x="180" y="175" width="20" height="20" fill="#87CEEB" />
+                    <rect x="95" y="170" width="30" height="30" fill="#FFFFFF" />
+                    <rect x="100" y="175" width="20" height="20" fill="#87CEEB" />
+                    <rect x="150" y="75" width="20" height="30" fill="#696969" />
+                </svg>
+            </div>
+            <div class="image image2" id="imagem2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+                    <!-- Árvore -->
+                    <rect x="135" y="150" width="30" height="100" fill="#8B4513" />
+                    <circle cx="150" cy="140" r="60" fill="#228B22" />
+                    <circle cx="120" cy="100" r="40" fill="#228B22" />
+                    <circle cx="180" cy="100" r="40" fill="#228B22" />
+                    <circle cx="100" cy="150" r="35" fill="#228B22" />
+                    <circle cx="200" cy="150" r="35" fill="#228B22" />
+                    <circle cx="150" cy="80" r="30" fill="#228B22" />
+                </svg>
+            </div>
+        </div>
+        
+        <div class="buttons">
+            <button class="btn" id="botao1" aria-label="Casa">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+            </button>
+            <button class="btn" id="botao2" aria-label="Árvore">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22v-4"></path>
+                    <path d="M17 14l.001-.003A6.538 6.538 0 0 0 18.5 10.5a6.5 6.5 0 0 0-13 0c0 1.295.383 2.5 1.04 3.5"></path>
+                    <path d="M12 18c-3.3 0-6-2.7-6-6 0-.66.107-1.3.316-1.895a6 6 0 0 1 11.368 0c.21.6.316 1.24.316 1.9 0 3.3-2.7 6-6 6z"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const imagem1 = document.getElementById('imagem1');
+            const imagem2 = document.getElementById('imagem2');
+            const botao1 = document.getElementById('botao1');
+            const botao2 = document.getElementById('botao2');
+            
+            // Função para mostrar a imagem 1
+            botao1.addEventListener('click', function() {
+                imagem1.style.opacity = '1';
+                imagem2.style.opacity = '0';
+            });
+            
+            // Função para mostrar a imagem 2
+            botao2.addEventListener('click', function() {
+                imagem1.style.opacity = '0';
+                imagem2.style.opacity = '1';
+            });
+        });
+    </script>
+</body>
+</html>
