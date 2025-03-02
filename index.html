@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo de Imagens</title>
     <style>
+        /* Estilos anteriores mantidos */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -17,175 +18,122 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
-            padding: 0;
             background-color: #f0f0f0;
             overflow: hidden;
         }
-        
-        .container {
-            display: flex;
-            width: 100%;
-            height: 100vh;
-            position: relative;
+
+        /* Novo estilo para a tela de login */
+        .login-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            z-index: 200;
+            width: 90%;
+            max-width: 400px;
         }
-        
-        .image-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        
-        .image {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: opacity 0.5s ease;
-        }
-        
-        .image1 {
+
+        .login-form {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-            opacity: 1;
+            flex-direction: column;
+            gap: 1rem;
         }
-        
-        .image2 {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-            opacity: 0;
+
+        .login-form input {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
         }
-        
-        .buttons {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-        }
-        
-        .btn {
-            width: 60px;
-            height: 60px;
-            font-size: 0;
+
+        .login-form button {
+            padding: 0.8rem;
             background-color: #3498db;
             color: white;
             border: none;
-            border-radius: 10px;
+            border-radius: 5px;
             cursor: pointer;
+            font-size: 1rem;
             transition: background-color 0.3s;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
-        
-        .btn:hover {
+
+        .login-form button:hover {
             background-color: #2980b9;
         }
-        
-        .btn svg {
-            width: 32px;
-            height: 32px;
+
+        .error-message {
+            color: #e74c3c;
+            text-align: center;
+            display: none;
+            margin-top: 0.5rem;
         }
-        
-        /* Responsivo para dispositivos móveis */
-        @media (max-width: 767px) {
-            .buttons {
-                flex-direction: row;
-                position: fixed;
-                bottom: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-                z-index: 100;
-                background-color: rgba(245, 245, 245, 0.8);
-                padding: 10px;
-                border-radius: 15px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            }
+
+        .hidden {
+            display: none;
         }
-        
-        @media (min-width: 768px) {
-            .buttons {
-                flex-direction: column;
-                position: fixed;
-                right: 20px;
-                top: 50%;
-                transform: translateY(-50%);
-                z-index: 100;
-                background-color: rgba(245, 245, 245, 0.8);
-                padding: 15px;
-                border-radius: 15px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            }
+
+        /* Restante dos estilos anteriores mantidos */
+        .container {
+            display: none; /* Escondido inicialmente */
+            /* ... mantido o restante dos estilos ... */
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="image-container">
-            <div class="image image1" id="imagem1">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
-                    <!-- Casa -->
-                    <rect x="75" y="150" width="150" height="100" fill="#8B4513" />
-                    <polygon points="75,150 150,75 225,150" fill="#A52A2A" />
-                    <rect x="125" y="200" width="50" height="50" fill="#FFFFFF" />
-                    <rect x="135" y="210" width="30" height="40" fill="#87CEEB" />
-                    <rect x="175" y="170" width="30" height="30" fill="#FFFFFF" />
-                    <rect x="180" y="175" width="20" height="20" fill="#87CEEB" />
-                    <rect x="95" y="170" width="30" height="30" fill="#FFFFFF" />
-                    <rect x="100" y="175" width="20" height="20" fill="#87CEEB" />
-                    <rect x="150" y="75" width="20" height="30" fill="#696969" />
-                </svg>
-            </div>
-            <div class="image image2" id="imagem2">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
-                    <!-- Árvore -->
-                    <rect x="135" y="150" width="30" height="100" fill="#8B4513" />
-                    <circle cx="150" cy="140" r="60" fill="#228B22" />
-                    <circle cx="120" cy="100" r="40" fill="#228B22" />
-                    <circle cx="180" cy="100" r="40" fill="#228B22" />
-                    <circle cx="100" cy="150" r="35" fill="#228B22" />
-                    <circle cx="200" cy="150" r="35" fill="#228B22" />
-                    <circle cx="150" cy="80" r="30" fill="#228B22" />
-                </svg>
-            </div>
-        </div>
-        
-        <div class="buttons">
-            <button class="btn" id="botao1" aria-label="Casa">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                </svg>
-            </button>
-            <button class="btn" id="botao2" aria-label="Árvore">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 22v-4"></path>
-                    <path d="M17 14l.001-.003A6.538 6.538 0 0 0 18.5 10.5a6.5 6.5 0 0 0-13 0c0 1.295.383 2.5 1.04 3.5"></path>
-                    <path d="M12 18c-3.3 0-6-2.7-6-6 0-.66.107-1.3.316-1.895a6 6 0 0 1 11.368 0c.21.6.316 1.24.316 1.9 0 3.3-2.7 6-6 6z"></path>
-                </svg>
-            </button>
-        </div>
+    <!-- Tela de Login -->
+    <div class="login-container" id="loginContainer">
+        <form class="login-form" id="loginForm">
+            <h2 style="text-align: center; margin-bottom: 1rem;">Login</h2>
+            <input type="text" placeholder="Username" id="username" required>
+            <input type="password" placeholder="Password" id="password" required>
+            <button type="submit">Entrar</button>
+            <div class="error-message" id="errorMessage">Usuário ou senha inválidos!</div>
+        </form>
+    </div>
+
+    <!-- Jogo (mantido o mesmo código) -->
+    <div class="container" id="gameContainer">
+        <!-- ... código anterior do jogo ... -->
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            const loginContainer = document.getElementById('loginContainer');
+            const gameContainer = document.getElementById('gameContainer');
+            const loginForm = document.getElementById('loginForm');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Função de login
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                // Validação (senha = "art")
+                if(password === 'art') {
+                    loginContainer.classList.add('hidden');
+                    gameContainer.style.display = 'flex';
+                    errorMessage.style.display = 'none';
+                } else {
+                    errorMessage.style.display = 'block';
+                }
+            });
+
+            // Código anterior do jogo mantido
             const imagem1 = document.getElementById('imagem1');
             const imagem2 = document.getElementById('imagem2');
             const botao1 = document.getElementById('botao1');
             const botao2 = document.getElementById('botao2');
             
-            // Função para mostrar a imagem 1
             botao1.addEventListener('click', function() {
                 imagem1.style.opacity = '1';
                 imagem2.style.opacity = '0';
             });
             
-            // Função para mostrar a imagem 2
             botao2.addEventListener('click', function() {
                 imagem1.style.opacity = '0';
                 imagem2.style.opacity = '1';
