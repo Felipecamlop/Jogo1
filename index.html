@@ -17,72 +17,18 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            margin: 0;
+            padding: 0;
             background-color: #f0f0f0;
             overflow: hidden;
         }
-
-        /* Estilos da tela de login */
-        .login-container {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-            z-index: 200;
-            width: 90%;
-            max-width: 400px;
-        }
-
-        .login-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .login-form input {
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .login-form button {
-            padding: 0.8rem;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s;
-        }
-
-        .login-form button:hover {
-            background-color: #2980b9;
-        }
-
-        .error-message {
-            color: #e74c3c;
-            text-align: center;
-            display: none;
-            margin-top: 0.5rem;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        /* Estilos originais do jogo */
+        
         .container {
             display: flex;
             width: 100%;
             height: 100vh;
             position: relative;
             background-color: white;
-            display: none; /* Inicialmente escondido */
         }
         
         .image-container {
@@ -146,6 +92,79 @@
             height: 32px;
         }
         
+        /* Tela de login */
+        .login-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .login-form {
+            background-color: #f5f5f5;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 350px;
+        }
+        
+        .login-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .login-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 10px;
+            text-align: center;
+            display: none;
+        }
+        
+        /* Responsivo para dispositivos móveis */
         @media (max-width: 767px) {
             .buttons {
                 flex-direction: row;
@@ -180,17 +199,23 @@
 <body>
     <!-- Tela de Login -->
     <div class="login-container" id="loginContainer">
-        <form class="login-form" id="loginForm">
-            <h2 style="text-align: center; margin-bottom: 1rem;">Login</h2>
-            <input type="text" placeholder="Username" id="username" required>
-            <input type="password" placeholder="Password" id="password" required>
-            <button type="submit">Entrar</button>
-            <div class="error-message" id="errorMessage">Usuário ou senha inválidos!</div>
-        </form>
+        <div class="login-form">
+            <h2>Login</h2>
+            <div class="form-group">
+                <label for="username">Usuário:</label>
+                <input type="text" id="username" placeholder="Digite seu nome de usuário">
+            </div>
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" placeholder="Digite sua senha">
+            </div>
+            <button class="login-btn" id="loginBtn">Entrar</button>
+            <p class="error-message" id="errorMessage">Senha incorreta. Tente novamente.</p>
+        </div>
     </div>
 
-    <!-- Jogo -->
-    <div class="container" id="gameContainer">
+    <!-- Jogo de Imagens (ficará escondido até o login) -->
+    <div class="container" id="gameContainer" style="display: none;">
         <div class="image-container">
             <div class="image image1" id="imagem1">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
@@ -241,29 +266,38 @@
         document.addEventListener('DOMContentLoaded', function() {
             const loginContainer = document.getElementById('loginContainer');
             const gameContainer = document.getElementById('gameContainer');
-            const loginForm = document.getElementById('loginForm');
+            const loginBtn = document.getElementById('loginBtn');
+            const passwordInput = document.getElementById('password');
             const errorMessage = document.getElementById('errorMessage');
             
-            // Função de login
-            loginForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const password = document.getElementById('password').value;
-
-                if(password === 'art') {
-                    loginContainer.style.display = 'none';
-                    gameContainer.style.display = 'flex'; // Exibe o container do jogo
-                    errorMessage.style.display = 'none';
-                } else {
-                    errorMessage.style.display = 'block';
-                }
-            });
-
-            // Controle das imagens
             const imagem1 = document.getElementById('imagem1');
             const imagem2 = document.getElementById('imagem2');
             const botao1 = document.getElementById('botao1');
             const botao2 = document.getElementById('botao2');
             
+            // Verificação de login
+            loginBtn.addEventListener('click', function() {
+                if (passwordInput.value === 'art') {
+                    // Login bem-sucedido
+                    loginContainer.style.display = 'none';
+                    gameContainer.style.display = 'flex';
+                    errorMessage.style.display = 'none';
+                } else {
+                    // Senha incorreta
+                    errorMessage.style.display = 'block';
+                    passwordInput.value = '';
+                    passwordInput.focus();
+                }
+            });
+            
+            // Também permitir login com a tecla Enter
+            passwordInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    loginBtn.click();
+                }
+            });
+            
+            // Funções do jogo
             botao1.addEventListener('click', function() {
                 imagem1.style.opacity = '1';
                 imagem2.style.opacity = '0';
