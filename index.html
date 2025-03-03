@@ -47,19 +47,17 @@
         }
         
         .image1 {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
             opacity: 1;
         }
         
-        .image2, .image3, .image4, .image5, .image6 {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
+        .image2, .image3, .image4, .image5, .image6, .image7, .image8 {
             opacity: 0;
+        }
+        
+        .image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
         
         .buttons {
@@ -81,15 +79,43 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 5px;
         }
         
         .btn:hover {
             background-color: #2980b9;
         }
         
-        .btn svg {
-            width: 32px;
-            height: 32px;
+        .btn img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .link-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .link-btn {
+            width: 60px;
+            height: 60px;
+            background-color: transparent;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+        }
+        
+        .link-btn img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
         
         /* Tela de login */
@@ -191,22 +217,25 @@
         
         /* Responsivo para dispositivos móveis */
         @media (max-width: 767px) {
-            .buttons {
-                flex-direction: row;
-                flex-wrap: wrap;
+            .buttons-container {
                 position: fixed;
                 bottom: 20px;
                 left: 50%;
                 transform: translateX(-50%);
                 z-index: 100;
                 background-color: rgba(245, 245, 245, 0.8);
-                padding: 10px;
+                padding: 15px;
                 border-radius: 15px;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
                 width: 90%;
                 max-width: 400px;
+            }
+            
+            .buttons {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                grid-gap: 10px;
                 justify-content: center;
-                gap: 10px;
             }
             
             .btn {
@@ -214,13 +243,14 @@
                 height: 50px;
                 margin: 5px;
             }
+            
+            .link-buttons {
+                justify-content: center;
+            }
         }
         
         @media (min-width: 768px) {
-            .buttons {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                grid-gap: 10px;
+            .buttons-container {
                 position: fixed;
                 right: 20px;
                 top: 50%;
@@ -230,6 +260,17 @@
                 padding: 15px;
                 border-radius: 15px;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+            
+            .buttons {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 10px;
+            }
+            
+            .link-buttons {
+                display: flex;
+                justify-content: space-between;
             }
         }
     </style>
@@ -280,148 +321,67 @@
     <div class="container" id="gameContainer" style="display: none;">
         <div class="image-container">
             <div class="image image1" id="imagem1">
-                <!-- Substituído a casa pelo sapo -->
-                <img src="/api/placeholder/400/320" alt="Imagem de sapo" style="max-width: 100%; max-height: 100%; object-fit: contain;" />
+                <img src="src/image1.png" alt="Imagem 1">
             </div>
             <div class="image image2" id="imagem2">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
-                    <!-- Árvore -->
-                    <rect x="135" y="150" width="30" height="100" fill="#8B4513" />
-                    <circle cx="150" cy="140" r="60" fill="#228B22" />
-                    <circle cx="120" cy="100" r="40" fill="#228B22" />
-                    <circle cx="180" cy="100" r="40" fill="#228B22" />
-                    <circle cx="100" cy="150" r="35" fill="#228B22" />
-                    <circle cx="200" cy="150" r="35" fill="#228B22" />
-                    <circle cx="150" cy="80" r="30" fill="#228B22" />
-                </svg>
+                <img src="src/image2.png" alt="Imagem 2">
             </div>
             <div class="image image3" id="imagem3">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
-                    <!-- Sol -->
-                    <circle cx="150" cy="150" r="60" fill="#FFD700" />
-                    <g stroke="#FFD700" stroke-width="6">
-                        <line x1="150" y1="70" x2="150" y2="30" />
-                        <line x1="150" y1="270" x2="150" y2="230" />
-                        <line x1="70" y1="150" x2="30" y2="150" />
-                        <line x1="270" y1="150" x2="230" y2="150" />
-                        <line x1="95" y1="95" x2="65" y2="65" />
-                        <line x1="235" y1="235" x2="205" y2="205" />
-                        <line x1="95" y1="205" x2="65" y2="235" />
-                        <line x1="235" y1="65" x2="205" y2="95" />
-                    </g>
-                </svg>
+                <img src="src/image3.png" alt="Imagem 3">
             </div>
             <div class="image image4" id="imagem4">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
-                    <!-- Nuvem com chuva -->
-                    <path d="M80,110 Q50,110 50,90 Q50,60 80,60 Q90,40 120,50 Q135,30 160,45 Q190,25 210,55 Q240,50 240,80 Q260,95 240,115 Q245,135 220,135 Q210,150 180,140 Q160,155 135,135 Q110,155 90,130 Q70,140 80,110" fill="#CCCCCC" />
-                    <!-- Gotas de chuva -->
-                    <g fill="#4682B4">
-                        <path d="M90,160 Q95,170 100,180 Q105,170 100,160 Z" />
-                        <path d="M120,170 Q125,180 130,190 Q135,180 130,170 Z" />
-                        <path d="M150,160 Q155,170 160,180 Q165,170 160,160 Z" />
-                        <path d="M180,170 Q185,180 190,190 Q195,180 190,170 Z" />
-                        <path d="M210,160 Q215,170 220,180 Q225,170 220,160 Z" />
-                        <path d="M105,200 Q110,210 115,220 Q120,210 115,200 Z" />
-                        <path d="M135,210 Q140,220 145,230 Q150,220 145,210 Z" />
-                        <path d="M165,200 Q170,210 175,220 Q180,210 175,200 Z" />
-                        <path d="M195,210 Q200,220 205,230 Q210,220 205,210 Z" />
-                    </g>
-                </svg>
+                <img src="src/image4.png" alt="Imagem 4">
             </div>
             <div class="image image5" id="imagem5">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
-                    <!-- Montanhas -->
-                    <polygon points="0,200 60,100 120,180 180,80 240,160 300,120 300,300 0,300" fill="#6B8E23" />
-                    <polygon points="60,100 100,130 120,180" fill="#FFFFFF" />
-                    <polygon points="180,80 220,120 240,160" fill="#FFFFFF" />
-                    <!-- Lago -->
-                    <ellipse cx="150" cy="250" rx="100" ry="30" fill="#4682B4" />
-                </svg>
+                <img src="src/image5.png" alt="Imagem 5">
             </div>
             <div class="image image6" id="imagem6">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
-                    <!-- Estrelas no céu noturno -->
-                    <rect width="300" height="300" fill="#191970" />
-                    <!-- Lua -->
-                    <circle cx="220" cy="80" r="40" fill="#FFFACD" />
-                    <circle cx="200" cy="70" r="35" fill="#191970" />
-                    <!-- Estrelas -->
-                    <g fill="#FFFFFF">
-                        <circle cx="50" cy="50" r="2" />
-                        <circle cx="80" cy="80" r="1.5" />
-                        <circle cx="120" cy="40" r="2" />
-                        <circle cx="160" cy="90" r="1.5" />
-                        <circle cx="200" cy="120" r="1" />
-                        <circle cx="240" cy="140" r="2" />
-                        <circle cx="60" cy="160" r="1.5" />
-                        <circle cx="100" cy="180" r="1" />
-                        <circle cx="140" cy="150" r="2" />
-                        <circle cx="180" cy="170" r="1" />
-                        <circle cx="220" cy="200" r="1.5" />
-                        <circle cx="270" cy="60" r="2" />
-                        <!-- Estrela cadente -->
-                        <path d="M150,30 L170,50 L140,40 Z" />
-                    </g>
-                </svg>
+                <img src="src/image6.png" alt="Imagem 6">
+            </div>
+            <div class="image image7" id="imagem7">
+                <img src="src/image7.png" alt="Imagem 7">
+            </div>
+            <div class="image image8" id="imagem8">
+                <img src="src/image8.png" alt="Imagem 8">
             </div>
         </div>
         
-        <div class="buttons">
-            <button class="btn" id="botao1" aria-label="Sapo">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <!-- Ícone de sapo simplificado -->
-                    <circle cx="12" cy="10" r="3"></circle>
-                    <path d="M19 7c0-1.1-.9-2-2-2H7c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2v-3"></path>
-                    <path d="M16 14h4a2 2 0 0 0 0-4h-2a2 2 0 0 1 0-4h3"></path>
-                </svg>
-            </button>
-            <button class="btn" id="botao2" aria-label="Árvore">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 22v-4"></path>
-                    <path d="M17 14l.001-.003A6.538 6.538 0 0 0 18.5 10.5a6.5 6.5 0 0 0-13 0c0 1.295.383 2.5 1.04 3.5"></path>
-                    <path d="M12 18c-3.3 0-6-2.7-6-6 0-.66.107-1.3.316-1.895a6 6 0 0 1 11.368 0c.21.6.316 1.24.316 1.9 0 3.3-2.7 6-6 6z"></path>
-                </svg>
-            </button>
-            <button class="btn" id="botao3" aria-label="Sol">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="5"></circle>
-                    <line x1="12" y1="1" x2="12" y2="3"></line>
-                    <line x1="12" y1="21" x2="12" y2="23"></line>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                    <line x1="1" y1="12" x2="3" y2="12"></line>
-                    <line x1="21" y1="12" x2="23" y2="12"></line>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                </svg>
-            </button>
-            <button class="btn" id="botao4" aria-label="Chuva">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20 16.2A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"></path>
-                    <line x1="8" y1="19" x2="8" y2="21"></line>
-                    <line x1="8" y1="13" x2="8" y2="15"></line>
-                    <line x1="16" y1="19" x2="16" y2="21"></line>
-                    <line x1="16" y1="13" x2="16" y2="15"></line>
-                    <line x1="12" y1="21" x2="12" y2="23"></line>
-                    <line x1="12" y1="15" x2="12" y2="17"></line>
-                </svg>
-            </button>
-            <button class="btn" id="botao5" aria-label="Montanha">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M8 3L4 15h16l-4-12"></path>
-                    <path d="M2 21h20"></path>
-                    <path d="M13 7l3 3"></path>
-                    <path d="M13 7l-3 3"></path>
-                </svg>
-            </button>
-            <button class="btn" id="botao6" aria-label="Noite">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
-                    <path d="M19 3v4"></path>
-                    <path d="M21 5h-4"></path>
-                </svg>
-            </button>
+        <div class="buttons-container">
+            <div class="buttons">
+                <button class="btn" id="botao1" aria-label="Ícone 1">
+                    <img src="src/Ico1.png" alt="Ícone 1">
+                </button>
+                <button class="btn" id="botao2" aria-label="Ícone 2">
+                    <img src="src/Ico2.png" alt="Ícone 2">
+                </button>
+                <button class="btn" id="botao3" aria-label="Ícone 3">
+                    <img src="src/Ico3.png" alt="Ícone 3">
+                </button>
+                <button class="btn" id="botao4" aria-label="Ícone 4">
+                    <img src="src/Ico4.png" alt="Ícone 4">
+                </button>
+                <button class="btn" id="botao5" aria-label="Ícone 5">
+                    <img src="src/Ico5.png" alt="Ícone 5">
+                </button>
+                <button class="btn" id="botao6" aria-label="Ícone 6">
+                    <img src="src/Ico6.png" alt="Ícone 6">
+                </button>
+                <button class="btn" id="botao7" aria-label="Ícone 7">
+                    <img src="src/Ico7.png" alt="Ícone 7">
+                </button>
+                <button class="btn" id="botao8" aria-label="Ícone 8">
+                    <img src="src/Ico8.png" alt="Ícone 8">
+                </button>
+            </div>
+            
+            <div class="link-buttons">
+                <a href="https://www.google.com" target="_blank" class="link-btn" id="link1">
+                    <img src="src/link1.png" alt="Link 1">
+                </a>
+                <a href="https://www.youtube.com" target="_blank" class="link-btn" id="link2">
+                    <img src="src/link2.png" alt="Link 2">
+                </a>
+            </div>
         </div>
     </div>
 
@@ -435,12 +395,25 @@
             
             const imagem1 = document.getElementById('imagem1');
             const imagem2 = document.getElementById('imagem2');
+            const imagem3 = document.getElementById('imagem3');
+            const imagem4 = document.getElementById('imagem4');
+            const imagem5 = document.getElementById('imagem5');
+            const imagem6 = document.getElementById('imagem6');
+            const imagem7 = document.getElementById('imagem7');
+            const imagem8 = document.getElementById('imagem8');
+            
             const botao1 = document.getElementById('botao1');
             const botao2 = document.getElementById('botao2');
+            const botao3 = document.getElementById('botao3');
+            const botao4 = document.getElementById('botao4');
+            const botao5 = document.getElementById('botao5');
+            const botao6 = document.getElementById('botao6');
+            const botao7 = document.getElementById('botao7');
+            const botao8 = document.getElementById('botao8');
             
             // Verificação de login
             loginBtn.addEventListener('click', function() {
-                if (passwordInput.value === 'Felipe') {
+                if (passwordInput.value === 'art') {
                     // Login bem-sucedido
                     loginContainer.style.display = 'none';
                     gameContainer.style.display = 'flex';
@@ -460,17 +433,6 @@
                 }
             });
             
-            // Funções do jogo - referências a todas as imagens
-            const imagem3 = document.getElementById('imagem3');
-            const imagem4 = document.getElementById('imagem4');
-            const imagem5 = document.getElementById('imagem5');
-            const imagem6 = document.getElementById('imagem6');
-            
-            const botao3 = document.getElementById('botao3');
-            const botao4 = document.getElementById('botao4');
-            const botao5 = document.getElementById('botao5');
-            const botao6 = document.getElementById('botao6');
-            
             // Função para esconder todas as imagens
             function esconderTodasImagens() {
                 imagem1.style.opacity = '0';
@@ -479,6 +441,8 @@
                 imagem4.style.opacity = '0';
                 imagem5.style.opacity = '0';
                 imagem6.style.opacity = '0';
+                imagem7.style.opacity = '0';
+                imagem8.style.opacity = '0';
             }
             
             // Configura os listeners para cada botão
@@ -510,6 +474,16 @@
             botao6.addEventListener('click', function() {
                 esconderTodasImagens();
                 imagem6.style.opacity = '1';
+            });
+            
+            botao7.addEventListener('click', function() {
+                esconderTodasImagens();
+                imagem7.style.opacity = '1';
+            });
+            
+            botao8.addEventListener('click', function() {
+                esconderTodasImagens();
+                imagem8.style.opacity = '1';
             });
         });
     </script>
