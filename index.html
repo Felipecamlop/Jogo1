@@ -155,10 +155,30 @@
             font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s;
+            margin-bottom: 10px;
         }
         
         .login-btn:hover {
             background-color: #2980b9;
+        }
+        
+        .site-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+        
+        .site-btn:hover {
+            background-color: #c0392b;
         }
         
         .error-message {
@@ -251,6 +271,7 @@
                 <input type="password" id="password" placeholder="Digite sua senha">
             </div>
             <button class="login-btn" id="loginBtn">Entrar</button>
+            <a href="https://www.youtube.com/watch?v=YUDbl9qBihk" class="site-btn" target="_blank">Site</a>
             <p class="error-message" id="errorMessage">Senha incorreta. Tente novamente.</p>
         </div>
     </div>
