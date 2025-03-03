@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo de Imagens</title>
+    <title>Image Game</title>
     <style>
         * {
             box-sizing: border-box;
@@ -118,7 +118,7 @@
             object-fit: contain;
         }
         
-        /* Tela de login */
+        /* Login screen */
         .login-container {
             position: absolute;
             top: 0;
@@ -215,7 +215,7 @@
             display: none;
         }
         
-        /* Responsivo para dispositivos móveis */
+        /* Responsive for mobile devices */
         @media (max-width: 767px) {
             .buttons-container {
                 position: fixed;
@@ -276,7 +276,7 @@
     </style>
 </head>
 <body>
-    <!-- Tela de Login -->
+    <!-- Login Screen -->
     <div class="login-container" id="loginContainer">
         <div class="login-form">
             <div class="cloud-banner">
@@ -284,73 +284,73 @@
             </div>
             <h2>Login</h2>
             <div class="form-group">
-                <label for="username">Usuário:</label>
-                <input type="text" id="username" placeholder="Digite seu nome de usuário">
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Enter your username">
             </div>
             <div class="form-group">
-                <label for="password">Senha:</label>
-                <input type="password" id="password" placeholder="Digite sua senha">
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Enter your password">
             </div>
-            <button class="login-btn" id="loginBtn">Entrar</button>
+            <button class="login-btn" id="loginBtn">Login</button>
             <a href="https://www.youtube.com/watch?v=YUDbl9qBihk" class="site-btn" target="_blank">Site</a>
-            <p class="error-message" id="errorMessage">Senha incorreta. Tente novamente.</p>
+            <p class="error-message" id="errorMessage">Incorrect password. Please try again.</p>
         </div>
     </div>
 
-    <!-- Jogo de Imagens (ficará escondido até o login) -->
+    <!-- Image Game (will be hidden until login) -->
     <div class="container" id="gameContainer" style="display: none;">
         <div class="image-container">
             <div class="image image1" id="imagem1">
-                <img src="src/image1.png" alt="Imagem 1">
+                <img src="src/image1.png" alt="Image 1">
             </div>
             <div class="image image2" id="imagem2">
-                <img src="src/image2.png" alt="Imagem 2">
+                <img src="src/image2.png" alt="Image 2">
             </div>
             <div class="image image3" id="imagem3">
-                <img src="src/image3.png" alt="Imagem 3">
+                <img src="src/image3.png" alt="Image 3">
             </div>
             <div class="image image4" id="imagem4">
-                <img src="src/image4.png" alt="Imagem 4">
+                <img src="src/image4.png" alt="Image 4">
             </div>
             <div class="image image5" id="imagem5">
-                <img src="src/image5.png" alt="Imagem 5">
+                <img src="src/image5.png" alt="Image 5">
             </div>
             <div class="image image6" id="imagem6">
-                <img src="src/image6.png" alt="Imagem 6">
+                <img src="src/image6.png" alt="Image 6">
             </div>
             <div class="image image7" id="imagem7">
-                <img src="src/image7.png" alt="Imagem 7">
+                <img src="src/image7.png" alt="Image 7">
             </div>
             <div class="image image8" id="imagem8">
-                <img src="src/image8.png" alt="Imagem 8">
+                <img src="src/image8.png" alt="Image 8">
             </div>
         </div>
         
         <div class="buttons-container">
             <div class="buttons">
-                <button class="btn" id="botao1" aria-label="Ícone 1">
-                    <img src="src/I=ico1.png" alt="Ícone 1">
+                <button class="btn" id="botao1" aria-label="Icon 1">
+                    <img src="src/I=ico1.png" alt="Icon 1">
                 </button>
-                <button class="btn" id="botao2" aria-label="Ícone 2">
-                    <img src="src/ico2.png" alt="Ícone 2">
+                <button class="btn" id="botao2" aria-label="Icon 2">
+                    <img src="src/ico2.png" alt="Icon 2">
                 </button>
-                <button class="btn" id="botao3" aria-label="Ícone 3">
-                    <img src="src/ico3.png" alt="Ícone 3">
+                <button class="btn" id="botao3" aria-label="Icon 3">
+                    <img src="src/ico3.png" alt="Icon 3">
                 </button>
-                <button class="btn" id="botao4" aria-label="Ícone 4">
-                    <img src="src/ico4.png" alt="Ícone 4">
+                <button class="btn" id="botao4" aria-label="Icon 4">
+                    <img src="src/ico4.png" alt="Icon 4">
                 </button>
-                <button class="btn" id="botao5" aria-label="Ícone 5">
-                    <img src="src/ico5.png" alt="Ícone 5">
+                <button class="btn" id="botao5" aria-label="Icon 5">
+                    <img src="src/ico5.png" alt="Icon 5">
                 </button>
-                <button class="btn" id="botao6" aria-label="Ícone 6">
-                    <img src="src/ico6.png" alt="Ícone 6">
+                <button class="btn" id="botao6" aria-label="Icon 6">
+                    <img src="src/ico6.png" alt="Icon 6">
                 </button>
-                <button class="btn" id="botao7" aria-label="Ícone 7">
-                    <img src="src/ico7.png" alt="Ícone 7">
+                <button class="btn" id="botao7" aria-label="Icon 7">
+                    <img src="src/ico7.png" alt="Icon 7">
                 </button>
-                <button class="btn" id="botao8" aria-label="Ícone 8">
-                    <img src="src/ico8.png" alt="Ícone 8">
+                <button class="btn" id="botao8" aria-label="Icon 8">
+                    <img src="src/ico8.png" alt="Icon 8">
                 </button>
             </div>
             
@@ -391,30 +391,30 @@
             const botao7 = document.getElementById('botao7');
             const botao8 = document.getElementById('botao8');
             
-            // Verificação de login
+            // Login verification
             loginBtn.addEventListener('click', function() {
                 if (passwordInput.value === 'art') {
-                    // Login bem-sucedido
+                    // Successful login
                     loginContainer.style.display = 'none';
                     gameContainer.style.display = 'flex';
                     errorMessage.style.display = 'none';
                 } else {
-                    // Senha incorreta
+                    // Incorrect password
                     errorMessage.style.display = 'block';
                     passwordInput.value = '';
                     passwordInput.focus();
                 }
             });
             
-            // Também permitir login com a tecla Enter
+            // Also allow login with Enter key
             passwordInput.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
                     loginBtn.click();
                 }
             });
             
-            // Função para esconder todas as imagens
-            function esconderTodasImagens() {
+            // Function to hide all images
+            function hideAllImages() {
                 imagem1.style.opacity = '0';
                 imagem2.style.opacity = '0';
                 imagem3.style.opacity = '0';
@@ -425,44 +425,44 @@
                 imagem8.style.opacity = '0';
             }
             
-            // Configura os listeners para cada botão
+            // Set up listeners for each button
             botao1.addEventListener('click', function() {
-                esconderTodasImagens();
+                hideAllImages();
                 imagem1.style.opacity = '1';
             });
             
             botao2.addEventListener('click', function() {
-                esconderTodasImagens();
+                hideAllImages();
                 imagem2.style.opacity = '1';
             });
             
             botao3.addEventListener('click', function() {
-                esconderTodasImagens();
+                hideAllImages();
                 imagem3.style.opacity = '1';
             });
             
             botao4.addEventListener('click', function() {
-                esconderTodasImagens();
+                hideAllImages();
                 imagem4.style.opacity = '1';
             });
             
             botao5.addEventListener('click', function() {
-                esconderTodasImagens();
+                hideAllImages();
                 imagem5.style.opacity = '1';
             });
             
             botao6.addEventListener('click', function() {
-                esconderTodasImagens();
+                hideAllImages();
                 imagem6.style.opacity = '1';
             });
             
             botao7.addEventListener('click', function() {
-                esconderTodasImagens();
+                hideAllImages();
                 imagem7.style.opacity = '1';
             });
             
             botao8.addEventListener('click', function() {
-                esconderTodasImagens();
+                hideAllImages();
                 imagem8.style.opacity = '1';
             });
         });
